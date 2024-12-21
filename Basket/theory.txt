@@ -1,0 +1,65 @@
+Command to create new angular project:
+ng new my-angular-app
+cd my-angular-app
+ng serve
+
+npm install bootstrap
+
+Add this in angular.json file
+"styles": [ "src/styles.css", "node_modules/bootstrap/dist/css/bootstrap.min.css" ],  
+
+npm install @fortawesome/fontawesome-free 
+
+"styles": [ "src/styles.css", "node_modules/@fortawesome/fontawesome-free/css/all.min.css" ] 
+
+
+Admin => vendors or owner
+add products/cars/sale/customer/offers
+
+website => 
+customer = purchase
+
+
+Admin - category(crud), products(curd), carts, customers, orders, login page
+website - categories, products, signup & login, add to cart,cart, orders
+
+https://themewagon.github.io/fruitables/
+
+website - landingpage, productpage,cartpage, checkoutpage, orderspage
+
+login n signup => modal popup
+
+
+creating components ->right click on admin ->select open in integrated terminal -> ng g c login
+
+routes is nothing but object
+
+https://codepen.io/Hematiali/pen/abMdzPd
+
+if you want to use ng-model you need to include FormsModel
+if ng model is inside the form tag then name property is mandatory
+
+dependency injection- using this we are navigating from one page to another by creating constructor instance
+
+we have to import router-outlet in angular 17
+whatever you use you need to import it in that particular component so that it won't disturb another component of project
+
+To use ngIf we need to import common module in ts file
+
+two ways are there to call api
+1. you can call it from that particular component
+2. you can create a service and call it from there
+
+command to create a service : ng g s product
+
+To make a api call from service module we need to import httpclientmodule
+
+variable declaration->constructor->on init->another methods
+app.config.ts ->add providehttpclient
+
+
+post api has 2 objects url and object
+how to learn javascript fast as begginer
+
+service- by using this you can reuse the code
+we create observable using $ symbol
