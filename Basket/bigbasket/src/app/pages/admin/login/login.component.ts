@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
+import { AuthenticateService } from '../../../services/authenticate.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -38,13 +40,15 @@ username: string = '';
 password: string = '';
 error: string = '';
 
-constructor(private authService: AuthService, private router: Router) {}
+constructor(private authService: AuthService, private router: Router,private authenticate:AuthenticateService,private toaster:ToastrService) {}
 
 login() {
   if (this.username && this.password) {
     this.authService.login(this.username, this.password).subscribe(
       (response) => {
-        alert('Login successful');
+        this.authenticate.logged();
+       // alert('Login successful');
+       this.toaster.success('logged in successfully')
         this.router.navigate(['/products']); // Redirect to home page
       },
       (error) => {

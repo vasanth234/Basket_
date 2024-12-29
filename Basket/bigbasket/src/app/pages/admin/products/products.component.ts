@@ -12,6 +12,7 @@ import { ProductService } from '../../../services/product/product.service';
 })
 export class ProductsComponent implements OnInit {
   isSidePanelVisible: boolean = false;
+  isLoading=true;
 
   productObj: any = {
    /* productId:0,
@@ -46,9 +47,15 @@ export class ProductsComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    setTimeout(() => {
+      this.isLoading = false;  // After the loading is done, hide the placeholder
+    }, 2000);  // Simulated 2-second delay
+  
     this.getAllCategory();
     this.getProducts();
   }
+  
+  
 
   getProducts() {
     this.productSrv.getProducts().subscribe((res: any) => {
