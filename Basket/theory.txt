@@ -63,3 +63,22 @@ how to learn javascript fast as begginer
 
 service- by using this you can reuse the code
 we create observable using $ symbol
+
+___________________________________________________________________________________
+
+Registered with username as Ankita
+password as Ankita12@
+
+
+
+created the new branch using the git checkout -b your-branch-name---->crreated changes branch as the name
+
+after created staged the changes using git add .
+
+after commited the changes what i had done using git commit -m "Describe your changes"
+
+Finally pushed the chanegs git push origin changes
+
+
+___________________________________________________________________________________
+using the command as ng generate module products --route products --module app.module   generated the 
