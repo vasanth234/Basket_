@@ -48,6 +48,7 @@ login() {
       (response) => {
         this.authenticate.logged();
        // alert('Login successful');
+       //using the toaster message
        this.toaster.success('logged in successfully')
         this.router.navigate(['/products']); // Redirect to home page
       },
