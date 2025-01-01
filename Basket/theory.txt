@@ -82,3 +82,7 @@ Finally pushed the chanegs git push origin changes
 
 ___________________________________________________________________________________
 using the command as ng generate module products --route products --module app.module   generated the 
+
+
+____________________________________________________________________________________
+I had made in github changes is our main branch and new branch is child branch which i modified

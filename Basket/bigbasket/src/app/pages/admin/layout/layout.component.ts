@@ -1,24 +1,37 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, effect, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { ThemeService } from '../../../services/themeservice.service';
+import { MatMenuModule } from '@angular/material/menu';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, MatSlideToggleModule, FormsModule, CommonModule],
+  imports: [RouterOutlet, RouterLink, MatSlideToggleModule, FormsModule, CommonModule,MatIconModule,MatMenuModule,BrowserAnimationsModule],
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.css'] // Fixed "styleUrl" typo to "styleUrls"
+  styleUrls: ['./layout.component.scss'] // Fixed "styleUrl" typo to "styleUrls"
 })
 export class LayoutComponent {
   profileImageUrl: string = '';
   selectedFile: File | null = null;
+   themeService = inject(ThemeService);
 
-  darkMode = signal(false); // Signal for dark mode state
+  //isDarkMode: boolean = false;
+
+
 
   constructor(private http: HttpClient) {}
+
+  /*toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    const theme = this.isDarkMode ? 'dark-theme' : 'light-theme';
+    document.body.className = theme;
+  }*/
 
   /**
    * Handle file input change event for uploading profile image.
@@ -52,12 +65,5 @@ export class LayoutComponent {
   /**
    * Apply dark mode changes dynamically.
    */
-  applyDarkMode = effect(() => {
-    const darkModeEnabled = this.darkMode(); // Get the current dark mode state
-    if (darkModeEnabled) {
-      document.body.classList.add('darkMode');
-    } else {
-      document.body.classList.remove('darkMode');
-    }
-  });
+  
 }

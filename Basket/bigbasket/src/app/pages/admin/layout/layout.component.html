@@ -1,60 +1,62 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/products">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/category">Category</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)">Link</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input  style="margin-right: 50px;"    class="form-control me-2" type="text" placeholder="Search">
-          <button   style="margin-right: 50px;"       class="btn btn-primary" type="button">Search</button>
-        </form>
-        <div  class="profile-container">
-          <div  >
-            <!-- Profile image container -->
-            <img style="width:50px ;height: 50px;"
-              [src]="profileImageUrl || 'https://images.pexels.com/photos/29549363/pexels-photo-29549363/free-photo-of-vibrant-european-robin-perched-in-nature.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load'"
-              alt="profile-image"
-              id="profileImage"
-              style="cursor: pointer; width: 100px; height: 100px; object-fit: cover border-radius 50%;"
-              class="rounded-circle"
-              (click)="fileInput.click()"
-            />
-          
-            <!-- Hidden file input -->
-            <input
-              type="file"
-              #fileInput
-              accept="image/*"
-              (change)="onFileChange($event)"
-              style="display: none;"
-            />
-          </div>
-        </div>
-        <div   style="margin-right:60px ;padding:10px" class="slide">
-          <mat-slide-toggle
-          [(ngModel)]="darkMode"
-          class="mr-8"
-          aria-label="Toggle dark mode"
-        >
-        </mat-slide-toggle>
-
-
-        </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/category">Category</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0)">Link</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Search">
+        <button class="btn btn-primary" type="button">Search</button>
+      </form>
+      <div class="profile-container mx-4">
+        <img
+          [src]="profileImageUrl || 'https://via.placeholder.com/50'"
+          alt="profile-image"
+          class="rounded-circle"
+          style="cursor: pointer; width: 50px; height: 50px; object-fit: cover;"
+          (click)="fileInput.click()"
+        />
+        <input type="file" #fileInput accept="image/*" (change)="onFileChange($event)" style="display: none;" />
       </div>
+      <!--belpw is 1st method-->
+      <!-- Dark Mode Toggle -->
+     <!--- <div class="slide">
+        <button class="btn btn-icon" (click)="toggleDarkMode()">
+          <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+        </button>
+      </div>-->
+
+      <!--below one is the 2nd method-->
+      <!-- Button that opens the menu -->
+<button mat-icon-button [mat-menu-trigger-for]="themeMenu">
+  <mat-icon>{{ themeService.selectedTheme()?.icon }}</mat-icon>
+</button>
+
+<!-- Menu -->
+<mat-menu #themeMenu="matMenu">
+  <button mat-menu-item *ngFor="let theme of themeService.getThemes()" 
+          (click)="themeService.setTheme(theme.name)">
+    <mat-icon>{{ theme.icon }}</mat-icon>
+    <span>{{ theme.name | titlecase }}</span>
+  </button>
+</mat-menu>
+
+      
     </div>
-  </nav>
+  </div>
+</nav>
 <div class="container-fluid">
-<router-outlet></router-outlet>
-</div>  
+  <router-outlet></router-outlet>
+</div>
